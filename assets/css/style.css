@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #181818;
+    color: white;
+    font-weight: 300;
+}
+
+.maincontainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 30%;
+    overflow-x: hidden;
+}
+.col1{
+    background-color: rgb(32, 24, 24);
+    padding: 0.01rem;
+}
+.col2{
+    background-color: rgb(83, 30, 79);
+    padding:0 0.5rem;
+}
+
+/*------------------------- Column 1 -------------------------*/
+.header{
+    display: flex;
+    padding: 0.5rem;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+.table-container{
+    height: 80vh;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #381313;
+}
+thead{
+    position: sticky;
+    top: 0;
+    background-color: #850303;
+}
+th{
+    padding: 0.1rem 0.5rem ;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+tbody tr{
+    transition: all 0.1  ease-in-out;
+}
+
+td{
+    padding: 0.1rem 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid;
+}
+
+tbody tr:nth-child(even){
+background-color: #381313;
+}
+
+tbody tr:hover{
+   background-color: rgb(82, 4, 4);
+   color: rgb(255, 255, 255);
+}
+/*------------------------- Column 2 -------------------------*/
+.col2-header-container{
+    display: flex;
+    justify-content: space-between;
+    padding:  0.5rem;
+}
+.col2-header h2{
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+.col2-header p{
+    font-size: 11px;
+    font-weight: 300;
+    color: #fcfcfc;
+}
+
+.class-action-btn-container{
+    display: flex;
+    float: right;
+}
+/*------------------------- Buttons -------------------------*/
+.button{
+    display: block;
+    padding: 0.5rem 0.5rem;
+    font-size: 14px;
+    background-color: #070406;
+    border: none;
+    border-radius: 10px;
+    margin-left: 1rem;
+    color: rgb(231, 225, 225);
+    cursor: pointer;
+    width: 4rem;
+    margin: 0.2rem;
+}
+.btn-add{
+    background-color: #070406;
+    margin-left: 1rem;
+}
+.btn-edit{
+    background-color: #850303;
+}
+.btn-delete, .btn-cancel{
+    background-color: #181818;
+}
+
+/*------------------------- textbox -------------------------*/
+
+.textbox{
+    background-color: #181818;
+    position: relative;
+    margin: 1rem;
+    overflow: hidden;
+}
+.textbox input{
+    width: 100%;
+    height: 80%;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    padding-top: 20px;
+    font-size: 18px;
+    outline: none;
+    text-transform: uppercase;
+}
+.txtbox-label{
+    position: none;
+    left: 0;
+    bottom: 0;
+    width: 100;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid;
+}
+.txtbox-label::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    border-bottom: 2px solid;
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
+}
+.placeholder{
+    position: absolute;
+    font-size: 18px;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.textbox input:focus+ .txtbox-label .placeholder,
+.textbox input:valid+ .txtbox-label .placeholder
+{
+    transform: translateY(-150%);
+    font-size: 12px;
+    color: #9fa076;
+}
+.textbox input:focus+ .txtbox-label::after,
+.textbox input:valid+ .txtbox-label::after
+{
+        transform: translateX(0%)
+}
