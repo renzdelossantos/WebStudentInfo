@@ -1,92 +1,215 @@
-*{
+* {
     margin: 0;
     padding: 0;
     outline: 0;
 }
-body{
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    background-color: #000000;
-    color: white;
+    background-color: #171817;
+    color: rgb(3, 5, 8);
     font-weight: 300;
 }
 
-.maincontainer{
+.maincontainer {
     width: 100%;
     display: grid;
     grid-template-columns: auto 30%;
     overflow-x: hidden;
 }
-.col1{
-    background-color: rgb(113, 110, 110);
-    padding:0 0.5rem;
+
+.col1 {
+    background-color: rgb(130, 177, 247);
+    padding: 0 0.5rem;
 }
-.col2{
-    background-color: rgb(49, 48, 49);
-    padding:0 0.5rem;
+
+.col2 {
+    background-color: rgb(128, 185, 202);
+    padding: 0 0.5rem;
 }
 
 /*------------------------- Column 1 -------------------------*/
 
-.header{
+.header {
     display: flex;
     padding: 0.5rem;
     font-size: 25px;
     font-weight: 500;
     letter-spacing: 0.2rem;
 }
-.table-container{
+
+.table-container {
     height: 80vh;
     border-radius: 10px;
     overflow-y: hidden;
 }
-table{
+
+table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #1b0ece;
+    background-color: #afdbec;
 }
-thead{
+
+thead {
     position: sticky;
     top: 0;
-    background-color: #050d35;
+    background-color: #6ecffc;
 }
-th{
-    padding: 0.1rem 0.5rem ;
+
+th {
+    padding: 0.1rem 0.5rem;
     text-align: center;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 300;
 }
 
-tbody tr{
-    transition: all 0.1  ease-in-out;
+tbody tr {
+    transition: all 0.1 ease-in-out;
 }
 
-td{
+td {
     padding: 0.1rem 0.5rem;
     text-align: center;
     font-size: 14px;
     border-bottom: 1px solid;
 }
 
-tbody tr:nth-child(even){
-background-color: #242184;
+tbody tr:nth-child(even) {
+    background-color: #80cbee;
 }
 
-tbody tr:hover{
-   background-color: rgb(0, 0, 0);
-   color: rgb(255, 255, 255);
+tbody tr:hover {
+    background-color: rgb(140, 181, 235);
+    color: rgb(56, 9, 9);
+}
+
+/*------------------------- Column 2 -------------------------*/
+.col2-header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.col2-header h2 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+.col2-header p {
+    font-size: 11px;
+    font-weight: 300;
+    color: #000000;
+}
+
+.class-action-btn-container {
+    display: flex;
+    float: right;
 }
 
 /*------------------------- Buttons -------------------------*/
-.button{
+
+.button {
     display: block;
     padding: 0.5rem 1rem;
     font-size: 16px;
-    background-color: #f6f2f5;
+    background-color: #070406;
     border: none;
     border-radius: 10px;
     margin-left: 1rem;
-    color: rgb(0, 0, 0);
+    color: #f1f1f1;
     cursor: pointer;
+    width: 4rem;
+    margin: 0.2rem;
+}
+
+.btn-add {
+    background-color: #166bdb;
+    margin-left: 1rem;
+}
+
+.btn-edit {
+    background-color: #ccdde4;
+}
+
+.btn-delete,
+.btn-cancel {
+    background-color: #ccdde4;
+}
+
+/*------------------------- textbox -------------------------*/
+
+.textbox {
+    position: relative;
+    margin: 1rem;
+    overflow: hidden;
+}
+
+.textbox input {
+    width: 100%;
+    height: 80%;
+    border: none;
+    color: #a6d6d6;
+    padding-top: 20px;
+    font-size: 18px;
+    outline: none;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.txtbox-label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #19778f;
+}
+
+.txtbox-label::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -1;
+    left: 0;
+    border-bottom: 2px solid #0f4653;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.placeholder {
+    position: absolute;
+    font-size: 18px;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.textbox input:focus+.txtbox-label .placeholder,
+.textbox input:valid+.txtbox-label .placeholder {
+    transform: translateY(-150%);
+    font-size: 12px;
+    color: #4b1b21;
+}
+
+.textbox input:focus+.txtbox-label::after,
+.textbox input:valid+.txtbox-label::after {
+    transform: translateX(0)
+}
+
+
+.display-none {
+    display: none;
+}
+
+.default-text .txtbox-label {
+    border-bottom: 0px;
+}
+
+.placeholder span {
+    color: #6c21e6;
 }
