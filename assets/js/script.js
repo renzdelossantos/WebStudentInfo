@@ -1,5 +1,4 @@
 import { StudentList } from "./data.js";
-
 let students = StudentList;
 let formMode = "add";
 let selectedStudentID = -1;
@@ -35,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 addBtn.addEventListener("click", () => {
   formMode = "add";
+  selectedStudentID = -1;
   resetform();
   enableformfields(true);
   togglebuttons(true, false);
-  populateFormFields(getStudentById(selectedStudentID));
 });
 
 editBtn.addEventListener("click", () => {
@@ -48,7 +47,6 @@ editBtn.addEventListener("click", () => {
   togglebuttons(true, false);
   populateFormFields(getStudentById(selectedStudentID));
 });
-
 
 deleteBtn.addEventListener("click", () => {
   formMode = "delete";
@@ -61,7 +59,6 @@ deleteBtn.addEventListener("click", () => {
 
 saveBtn.addEventListener("click", () => {
   if (validateInputForm().length > 0) return;
-  
 
   if (formMode === "add") {
     addStudent();
@@ -76,7 +73,16 @@ saveBtn.addEventListener("click", () => {
   fetchStudentData();
 });
 
-cancelBtn.addEventListener("click", () => {});
+cancelBtn.addEventListener("click", () => {
+  formMode = "";
+  resetform();
+
+  const selectedStudent = getStudentById(selectedStudentID);
+  if (selectedStudent) {
+    displayStudentDetails(selectedStudent);
+    togglebuttons(false, true);
+  }
+});
 resetform();
   displayStudentDetails(students[students.length - 1]);
 
@@ -112,8 +118,10 @@ function editStudent() {
 }
 function deleteStudent() {
   if (selectedStudentID === -1) return;
-  students.splice (
-    students.findIndex ((s) => s.id !== selectedStudentID), 1);
+  const studentIndex = students.findIndex((student) => student.id === selectedStudentID);
+  if (studentIndex !== -1) {
+    students.splice(studentIndex, 1);
+  }
   formMode = "";
 }
 
@@ -176,7 +184,7 @@ function populateFormFields(student) {
 }
 
 function resetform() {
-  togglebuttons(false, false);
+  togglebuttons(true, false);
   enableformfields(false);
   resetPlaceholder();
   resetInputFields();

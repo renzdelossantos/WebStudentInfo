@@ -25,7 +25,7 @@ body {
 }
 
 .col2 {
-    background-color: rgb(128, 185, 202);
+    background-color: rgb(62, 92, 222);
     padding: 0 0.5rem;
 }
 
@@ -48,7 +48,7 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #afdbec;
+    background-color: #e1827a;
 }
 
 thead {
@@ -112,31 +112,58 @@ tbody tr:hover {
 /*------------------------- Buttons -------------------------*/
 
 .button {
-    display: block;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    background-color: #070406;
-    border: none;
-    border-radius: 10px;
-    margin-left: 1rem;
-    color: #f1f1f1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    background-color: #24324a;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: #ffffff;
     cursor: pointer;
-    width: 4rem;
     margin: 0.2rem;
+    box-shadow: 0 2px 5px rgba(23, 24, 23, 0.18);
+}
+
+.button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(23, 24, 23, 0.22);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(23, 24, 23, 0.18);
+}
+
+.button:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.85);
+    outline-offset: 2px;
 }
 
 .btn-add {
-    background-color: #166bdb;
+    background-color: #126b4f;
     margin-left: 1rem;
 }
 
 .btn-edit {
-    background-color: #ccdde4;
+    background-color: #1769aa;
 }
 
-.btn-delete,
+.btn-delete {
+    background-color: #b33a3a;
+}
+
+.btn-save {
+    background-color: #126b4f;
+}
+
 .btn-cancel {
-    background-color: #ccdde4;
+    background-color: #5c6675;
 }
 
 /*------------------------- textbox -------------------------*/
@@ -151,7 +178,7 @@ tbody tr:hover {
     width: 100%;
     height: 80%;
     border: none;
-    color: #a6d6d6;
+    color: #d5ebeb;
     padding-top: 20px;
     font-size: 18px;
     outline: none;
@@ -166,7 +193,7 @@ tbody tr:hover {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    border-bottom: 1px solid #19778f;
+    border-bottom: 1px solid #69a5b5;
 }
 
 .txtbox-label::after {
@@ -211,5 +238,5 @@ tbody tr:hover {
 }
 
 .placeholder span {
-    color: #6c21e6;
+    color: #f4fbff;
 }
