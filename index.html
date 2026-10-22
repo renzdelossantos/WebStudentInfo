@@ -1,128 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-
-  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
-  </head>
+</head>
 
 <body>
-  <div class="main-container">
-    <div class="col1">
+    <div class="maincontainer">
+        <div class="col1">
+            <div class="header">
+                <h1>Student Infomation</h1>
+                <input type="button" value="Add" id="add-btn" class="button btn-add">
+                <form id="search-form" class="search-container">
+                    <input type="search" id="search-input" aria-label="Search students">
+                    <button type="submit" id="search-btn" class="button btn-search">Search</button>
+                </form>
+            </div>
 
-      <div class="header">
-        <h1>Student Information</h1>
-        <input type="button" value="Add" id="add-btn" class="button btn-add">
-      </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>LastName</th>
+                            <th>FirstName</th>
+                            <th>MiddleName</th>
+                            <th>Gender</th>
+                            <th>Year Level</th>
+                            <th>Section</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
 
-      <div class="table-container">
-        <table>
-          <thead>
-            <th>LastName</th>
-            <th>FirstName</th>
-            <th>MiddleName</th>
-            <th>Gender</th>
-            <th>Year Level</th>
-            <th>Section</th>
-            <th>Email</th>
-          </thead>
-
-            <tbody id="student-data"></tbody>
-
-        </table>
-      </div>
-    </div>
+                    <tbody id="student-data"></tbody>
 
 
-   <div class="col2">
-       
-    
-       <div class="col2-header-container">
-           <div class="col2-header">
-               <h2>Student Information</h2>
-               <p>Select a student to see details</p>
-          </div>
-
-          <input typee="button" value=" Edit" id="edit-btn" class="button btn-edit">
-          <input type="button" value="Delete" id="delete-btn" class="button btn-delete">  
-   
-        </div>
-
-        <div class=".form-container">
+                </table>
+            </div>
         </div>
 
         <div class="col2">
-           <form action=" ">
-             <div class="textbox">
-                <input type="text"  name="lastname" id="lastname" required>
-                <label class="txtbox-label" for="lastname">
-                  <span class="placeholder" id="placeholder-lastname">Last Name</span>
-             </label> 
-             </div> 
+            <div class="col2-header-container">
+                <div class="col2-header">
+                    <h2>Student Information</h2>
+                    <p>Select a Student to See Details</p>
+                </div>
 
-              <div class="textbox">
-                <input type="text"  name="firstname" id="firstname" required>
-                <label class="txtbox-label" for="firstname">
-                  <span class="placeholder" id="placeholder-firstname">First Name</span>
-             </label> 
-              </div>
+                <input type="button" value="Edit" id="edit-btn" class="button btn-edit">
+                <input type="button" value="Delete" id="delete-btn" class="button btn-delete">
+            </div>
+            <div class="form-cointainer">
+                <form action="  ">
+                    <div class="textbox">
+                        <input type="text" name="lastName" id="txt-lastName" required>
+                        <label class="txtbox-label" for="lastName">
+                            <span class="placeholder" id="placeholder-lastName">Last Name</span>
+                        </label>
+                    </div>
 
-              <div class="textbox">
-                <input type="text"  name="middlename" id="middlename" required>
-                <label class="txtbox-label" for="middlename">
-                  <span class="placeholder" id="placeholder-middlename">Middle Name</span>
-             </label> 
-              </div>
+                    <div class="textbox">
+                        <input type="text" name="firstName" id="txt-firstName" required>
+                        <label class="txtbox-label" for="firstName">
+                            <span class="placeholder" id="placeholder-firstName">First Name</span>
+                        </label>
+                    </div>
 
-              <div class="textbox">
-                <input type="text"  name="gender" id="gender" required>
-                <label class="txtbox-label" for="gender">
-                  <span class="placeholder" id="placeholder-gender">Gender</span>
-             </label> 
-              </div>
+                    <div class="textbox">
+                        <input type="text" name="middleName" id="txt-middleName" required>
+                        <label class="txtbox-label" for="middleName">
+                            <span class="placeholder" id="placeholder-middleName">Middle Name</span>
+                        </label>
+                    </div>
 
-              <div class="textbox">
-                <input type="text"  name="year-level" id="year-level" required>
-                <label class="txtbox-label" for="year-level">
-                  <span class="placeholder" id="placeholder-year-level">Year level</span>
-             </label> 
-              </div>
+                     <div class="option-box">
+                        <select name="gender" id="txt-gender">
+                            <option value="" selected disabled hidden></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Transformer">Transformer</option>
+                       </select>
+                        <label class="txtbox-label" for="gender">
+                            <span class="placeholder" id="placeholder-gender">Gender</span>
+                        </label>
+                    </div>
 
-              <div class="textbox">
-                <input type="text"  name="section" id="section" required>
-                <label class="txtbox-label" for="section">
-                  <span class="placeholder" id="placeholder-section">Section</span>
-             </label> 
-              </div>
+                    <div class="option-box">
+                        <select name="year-level" id="txt-year-level">
+                            <option value="" selected disabled hidden></option>
+                       </select>
+                        <label class="txtbox-label" for="year-level">
+                            <span class="placeholder" id="placeholder-year-level">Year Level</span>
+                        </label>
+                    </div>
 
-              <div class="textbox">
-                <input type="text"  name="email" id="email" required>
-                <label class="txtbox-label" for="email">
-                  <span class="placeholder" id="placeholder-email">Email</span>
-             </label> 
-              </div>
-             <div class="action-btn-container">
-              <input type="button" value="Save" id="save-btn" class="button btn-save">
-               <input type="button" value="Cancel" id="cancel-btn" class="button btn-cancel">
-             </div>
+                    <div class="option-box">
+                       <select name="section" id="txt-section">
+                        <option value="" selected disabled hidden></option>
+                       </select>
+                        <label class="txtbox-label" for="section">
+                            <span class="placeholder" id="placeholder-section">Section</span>
+                        </label>
+                    </div>
 
-             </div>
-           </form>
+                    <div class="textbox">
+                        <input type="text" name="email" id="txt-email" required>
+                        <label class="txtbox-label" for="email">
+                            <span class="placeholder" id="placeholder-email">Email</span>
+                        </label>
+                    </div>
+
+                    <div class="class-action-btn-container">
+                        <input type="button" value="Save" id="save-btn" class="button btn-save">
+                        <input type="button" value="Cancel" id="cancel-btn" class="button btn-cancel">
+                    </div>
+                </form>
+            </div>
         </div>
-        
-
     </div>
-  </div>
 
-   <script type="module" src="./assets/js/script.js"></script>
-  </table>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous"></script>
+    <script src="assets/js/scriptJQuery.js"></script>
+
 </body>
 
-</html>
+</html> 
