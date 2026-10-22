@@ -1,165 +1,240 @@
-    * {
-        margin: 0;
-        padding: 0;
-        outline: 0;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        background-color: darkslateblue;
-        color: white;
-        font-weight: 300;
-    }
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 16px;
+    background:
+        radial-gradient(circle at 88% 8%, rgba(240, 172, 76, 0.16), transparent 19rem),
+        #181a22;
+    color: #241a1d;
+    font-weight: 400;
+}
 
-    .main-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 20%;
-        overflow-x: hidden;
-    }
+.maincontainer {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(0, 70%) minmax(22rem, 30%);
+    overflow-x: hidden;
+}
 
-    .col1 {
-        padding: 0 0.5rem;
-    }
+.col1 {
+    background:
+        linear-gradient(145deg, rgba(255, 235, 203, 0.96), rgba(236, 215, 183, 0.98));
+    padding: 0 0.75rem 0.75rem;
+}
 
-    .col2 {
-        padding: 0 0.5rem;
-    }
+.col2 {
+    background:
+        linear-gradient(155deg, #173c42 0%, #102e35 58%, #0d252c 100%);
+    color: #fff9ef;
+    padding: 0 0.75rem 0.75rem;
+    box-shadow: -8px 0 24px rgba(9, 24, 29, 0.22);
+}
 
-    /*-------------------- Column 1 -------------------- */
-    .header {
-        display: flex;
-        padding: 0.5em;
-    }
+/*------------------------- Column 1 -------------------------*/
 
-    .header h1 {
-        font-size: 30px;
-        font-weight: 500;
-        letter-spacing: 0.2rem;
-    }
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
 
+.search-container {
+    display: flex;
+    flex: 1;
+    gap: 0.5rem;
+    min-width: 12rem;
+    padding: 0 0.5rem;
+}
 
-    .table-container {
-        height: 80vh;
-        border-radius: 10px;
-        overflow-y: auto;
-    }
+.search-container input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #24324a;
+    border-radius: 7px;
+    font: inherit;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: darkorchid;
-    }
+.btn-search {
+    background-color: #1769aa;
+}
 
-    thead {
-        position: sticky;
-        top: 0;
-        background-color: #e130e1;
-    }
+.table-container {
+    height: 80vh;
+    border-radius: 10px;
+    overflow: auto;
+}
 
-    th {
-        padding: 0.1rem 0.5rem;
-        text-align: center;
-        font-size: 14px;
-        text-transform: uppercase;
-        font-weight: 300;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffaf0;
+    box-shadow: 0 12px 32px rgba(91, 54, 47, 0.16);
+}
 
-    tbody tr {
-        transform: all 0.1s ease-in-out;
-    }
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, #b94f52, #c86b58);
+    color: #fffaf0;
+}
 
-    td {
-        padding: 0.1rem 0.5rem;
-        text-align: center;
-        font-size: 16px;
-        border-bottom: 1px solid #631164;
-    }
+th {
+    padding: 0.65rem 0.5rem;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-weight: 700;
+    border-right: 1px solid rgba(255, 250, 240, 0.22);
+}
 
-    tbody tr:nth-child(even) {
-        background-color: #7c3aee;
-    }
+tbody tr {
+    transition: background-color 0.12s ease, color 0.12s ease;
+}
 
-    tbody tr:hover {
-        background-color: #00fa9a;
-        color: #000000;
-    }
+td {
+    padding: 0.55rem 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #dac6b0;
+}
 
-    /*-------------------- Column 2 -------------------- */
-    .col2-header-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5rem;
-    }
+tbody tr:nth-child(even) {
+    background-color: #f1dfc7;
+}
 
-    .col2-header h2 {
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 0.1rem;
-    }
-     .col2-header p {
-        font-size: 11px;
-        font-weight: 300;
-        color: #9932cc;
-    }
+tbody tr:hover {
+    background-color: #f4b866;
+    color: #372226;
+}
 
+/*------------------------- Column 2 -------------------------*/
+.col2-header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
 
-    /*-------------------- Buttons -------------------- */
-    .button {
-        display: block;
-        padding: 0.5rem 1rem;
-        font-size: 14px;
-        background-color: deeppink;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
-        width: 4rem;
-        margin: 0.2rem;
-    }
+.col2-header h2 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    color: #f6c86d;
+}
 
-    .btn.add {
-        background-color: darkviolet;
-        margin-left: 1rem;
-    }
+.col2-header p {
+    font-size: 11px;
+    font-weight: 400;
+    color: #bed7d4;
+}
 
-    .btn-edit {
-        background-color: #00fa9a;
-    }
+.class-action-btn-container {
+    display: flex;
+    float: right;
+}
 
-    .btn-delete, .btn-cancel{
-        background-color: #7c3aee;
-    }
+/*------------------------- Buttons -------------------------*/
 
-    /*-------------------- Textbox -------------------- */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+    background:
+        linear-gradient(180deg, #315c62, #24464b);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 7px;
+    color: #fffaf0;
+    cursor: pointer;
+    margin: 0.2rem;
+    box-shadow: 0 3px 8px rgba(6, 20, 23, 0.28);
+}
 
-.textbox{
+.button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(6, 20, 23, 0.34);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(6, 20, 23, 0.28);
+}
+
+.button:focus-visible {
+    outline: 3px solid #f5c76b;
+    outline-offset: 2px;
+}
+
+.btn-add {
+    background: linear-gradient(180deg, #d88a3f, #ba603d);
+    margin-left: 1rem;
+}
+
+.btn-search {
+    background: linear-gradient(180deg, #d95c56, #b63e47);
+}
+
+.btn-edit {
+    background: linear-gradient(180deg, #3c8a85, #27686a);
+}
+
+.btn-delete {
+    background: linear-gradient(180deg, #cf5157, #9f303e);
+}
+
+.btn-save {
+    background: linear-gradient(180deg, #e7a84d, #c57536);
+}
+
+.btn-cancel {
+    background: linear-gradient(180deg, #5b6f75, #405159);
+}
+
+/*------------------------- textbox -------------------------*/
+
+.textbox {
     position: relative;
     margin: 1rem;
     overflow: hidden;
 }
 
-.textbox input{
+.textbox input {
     width: 100%;
     height: 80%;
-    border:none;
-    color: aqua;
-    background-color: transparent;
+    border: none;
+    color: #d5ebeb;
     padding-top: 20px;
     font-size: 18px;
     outline: none;
+    text-transform: uppercase;
+    background-color: transparent;
 }
 
 .txtbox-label {
     position: absolute;
-    left:0;
+    left: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    border-bottom: 1px solid black;
-    text-transform: uppercase;
+border-bottom: 1px solid #89b7ad;
 }
 
 .txtbox-label::after {
@@ -167,40 +242,78 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    bottom: -2px;
-    border-bottom: 2px solid deeppink;
-    transform:translateX(-100%);
+    bottom: -1;
+    left: 0;
+    border-bottom: 2px solid #f2ba5a;
+    transform: translateX(-100%);
     transition: all 0.3s ease;
 }
 
 .placeholder {
- position: absolute;
- font-size: 18px;
- bottom: 0;
- left: 0;
- transition: all 0.3s ease;   
+    position: absolute;
+    font-size: 18px;
+    bottom: 7px;
+    left: 0;
+    transition: all 0.3s ease;
 }
-.textbox input:focus+ .txtbox-label .placeholder,
-.textbox input:valid+ .txtbox-label .placeholder
+
+.textbox input:focus+.txtbox-label .placeholder,
+.textbox input:valid+.txtbox-label .placeholder,
+.option-box select:focus+.txtbox-label .placeholder,
+.option-box select:valid+.txtbox-label .placeholder
 {
     transform: translateY(-150%);
     font-size: 12px;
+    color: #f2ba5a;
 }
 
-.textbox input:focus+ .txtbox-label::after,
-.textbox input:valid+ .txtbox-label::after{
-    transform: translateX(0%);
-
+.textbox input:focus+.txtbox-label::after,
+.textbox input:valid+.txtbox-label::after,
+.option-box select:focus+.txtbox-label::after,
+.option-box select:valid+.txtbox-label::after
+{
+    transform: translateX(0)
 }
+
 
 .display-none {
     display: none;
 }
 
-.default-text .txtbox-label{
+.default-text .txtbox-label {
     border-bottom: 0px;
 }
 
-.placeholder span{
-    color: #39e3f6;
+.placeholder span {
+    color: #f4fbff;
+}
+
+/* -------------------- Option Box -------------------- */
+.option-box{
+
+    position: relative;
+    margin: 1rem;
+    overflow: hidden;
+}
+
+.option-box select {
+    width: 100%;
+    height: 58px;
+    padding: 20px 1.8rem 0 0;
+    border: none;
+    color: white;
+    background-color: transparent;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.option-box select:disabled {
+    color: transparent;
+}
+
+.option-box select option {
+    color: #fff9ef;
+    background-color: #173c42;
 }

@@ -1,9 +1,9 @@
 import { StudentList } from "./data.js";
 let students = StudentList;
-let formMode ="Add";
-let selectedStudentsID = -1;
+let formMode = "add";
+let selectedStudentID = -1;
 
-const tbody = document.getElementById("student-data")
+const tbody = document.getElementById("student-data");
 
 const addBtn = document.getElementById("add-btn");
 const editBtn = document.getElementById("edit-btn");
@@ -11,215 +11,252 @@ const deleteBtn = document.getElementById("delete-btn");
 const saveBtn = document.getElementById("save-btn");
 const cancelBtn = document.getElementById("cancel-btn");
 
-const txtlastname = document.getElementById("lastname");
-const txtfirstname = document.getElementById("firstname");
-const txtmiddlename = document.getElementById("middlename");
-const txtgender = document.getElementById("gender");
-const txtyearlevel = document.getElementById("year-level");
-const txtsection = document.getElementById("section");
-const txtemail = document.getElementById("email");
+const txtFirstName = document.getElementById("txt-firstName");
+const txtMiddleName = document.getElementById("txt-middleName");
+const txtLastName = document.getElementById("txt-lastName");
+const txtGender = document.getElementById("txt-gender");
+const txtYearLevel = document.getElementById("txt-year-level");
+const txtSection = document.getElementById("txt-section");
+const txtEmail = document.getElementById("txt-email");
 
-const placeholderLastname = document.getElementById("placeholder-lastname");   
-const placeholderFirstname = document.getElementById("placeholder-firstname");
-const placeholderMiddlename = document.getElementById("placeholder-middlename");
+const placeholderFirstName = document.getElementById("placeholder-firstName");
+const placeholderMiddleName = document.getElementById("placeholder-middleName");
+const placeholderLastName = document.getElementById("placeholder-lastName");
 const placeholderGender = document.getElementById("placeholder-gender");
 const placeholderYearLevel = document.getElementById("placeholder-year-level");
 const placeholderSection = document.getElementById("placeholder-section");
-const placeholderEmail = document.getElementById("placeholder-email");             
+const placeholderEmail = document.getElementById("placeholder-email");
 
-document.addEventListener("DOMContentLoaded", function(){
-   resetForm();
-   fetchStudentData();
+document.addEventListener("DOMContentLoaded", function () {
+  resetform();
+  fetchStudentData();
 });
 
 addBtn.addEventListener("click", () => {
-  formMode = "Add";
-  resetForm();
-   enableFormFields(true);
-   toggleButtons(true, false);
+  formMode = "add";
+  selectedStudentID = -1;
+  resetform();
+  enableformfields(true);
+  togglebuttons(true, false);
 });
 
 editBtn.addEventListener("click", () => {
-formMode = "Edit";
-resetForm();
-enableFormFields(true);
-toggleButtons(true, false);
-populateFormFields(getStudentById(selectedStudentsID));
-
+  formMode = "edit";
+  resetform();
+  enableformfields(true);
+  togglebuttons(true, false);
+  populateFormFields(getStudentById(selectedStudentID));
 });
 
 deleteBtn.addEventListener("click", () => {
-formMode = "Delete";
- if (confirm("Are you sure you want to delete this student?")){
-       deletestudent();
-       resetForm();
-       fetchStudentData();
- }
+  formMode = "delete";
+  if (confirm("Are you sure you want to delete this student?")) {
+    deleteStudent();
+    resetform();
+    fetchStudentData();
+  }
 });
 
-
 saveBtn.addEventListener("click", () => {
- if (validateForm().length > 0) return;
+  if (validateInputForm().length > 0) return;
 
- if (formMode === "Add") {
-      addStudent();
-    }
+  if (formMode === "add") {
+    addStudent();
+  }
+  if (formMode === "edit"){
+    editStudent();
+  }
 
-    if (formMode === "Edit") {
-      editStudents();
 
-    }
-    
-     
-    resetForm();    
-     displayStudentDetails(getStudentById(selectedStudentsID));
-     fetchStudentData();   
+  resetform();
+  displayStudentDetails(students[students.length - 1]);
+  fetchStudentData();
 });
 
 cancelBtn.addEventListener("click", () => {
-     displayStudentDetails(getStudentById(selectedStudentsID));
-    resetForm();
+  formMode = "";
+  resetform();
+
+  const selectedStudent = getStudentById(selectedStudentID);
+  if (selectedStudent) {
+    displayStudentDetails(selectedStudent);
+    togglebuttons(false, true);
+  }
 });
+resetform();
+  displayStudentDetails(students[students.length - 1]);
 
 
 function addStudent() {
-  selectedStudentsID = students.length + 1;
+  selectedStudentID = students.length + 1;
   const student = {
-    id: selectedStudentsID,
-    lastname: txtlastname.value,
-    firstname: txtfirstname.value,
-    middlename: txtmiddlename.value,
-    gender: txtgender.value,
-    year_level: txtyearlevel.value,
-    section: txtsection.value,
-    email: txtemail.value
+    id: selectedStudentID,
+    lastname: txtLastName.value,
+    firstname: txtFirstName.value,
+    middlename: txtMiddleName.value,
+    gender: txtGender.value,
+    year_level: txtYearLevel.value,
+    section: txtSection.value,
+    email: txtEmail.value,
   };
   students.push(student);
-  formMode= "";
-}
-
-function editStudents(){
-  let getStudent = getStudentById(selectedStudentsID);
-  if (getStudent) {
-    getStudent.lastname = txtlastname.value;
-    getStudent.firstname = txtfirstname.value;
-    getStudent.middlename = txtmiddlename.value;
-    getStudent.gender = txtgender.value;
-    getStudent.year_level = txtyearlevel.value;
-    getStudent.section = txtsection.value;
-    getStudent.email = txtemail.value;
-  }
   formMode = "";
+
 }
-function deletestudent(){
-  if(selectedStudentsID === -1) return;
-  students.splice(students.findIndex((s) => s.id === selectedStudentsID), 1);
+function editStudent() {
+ let getStudents = getStudentById(selectedStudentID);
+ if (getStudents) {
+  getStudents.lastname = txtLastName.value;
+  getStudents.firstname = txtFirstName.value;
+  getStudents.middlename = txtMiddleName.value;
+  getStudents.gender = txtGender.value;
+  getStudents.year_level = txtYearLevel.value;
+  getStudents.section = txtSection.value;
+  getStudents.email = txtEmail.value;
+ }
+ formMode = "";
+}
+function deleteStudent() {
+  if (selectedStudentID === -1) return;
+  const studentIndex = students.findIndex((student) => student.id === selectedStudentID);
+  if (studentIndex !== -1) {
+    students.splice(studentIndex, 1);
+  }
   formMode = "";
 }
 
 
 function fetchStudentData() {
-tbody.innerHTML = "";
-students.forEach(student => {
+  tbody.innerHTML = "";
+
+  students.forEach((student) => {
+
     const row = document.createElement("tr");
     row.innerHTML = `
-        <td>${student.lastname}</td>    
-        <td>${student.firstname}</td>
-        <td>${student.middlename}</td>
-        <td>${student.gender}</td>
-        <td>${student.year_level}</td>
-        <td>${student.section}</td>
-        <td>${student.email}</td>
-   `;
-   row.addEventListener("click", () => {
-        resetForm();
-        displayStudentDetails(student);
-        toggleButtons(false, true);
+            <td>${student.lastname}</td>
+            <td>${student.firstname}</td>
+            <td>${student.middlename}</td>
+            <td>${student.gender}</td>
+            <td>${student.year_level}</td>
+            <td>${student.section}</td>
+            <td>${student.email}</td>
+        `;
+
+    row.addEventListener("click", () => {
+      resetform();
+      displayStudentDetails(student);
+      togglebuttons(false, true);
     });
 
     tbody.appendChild(row);
-})
+  });
 }
 
 function displayStudentDetails(student) {
-   selectedStudentsID = student.id;
-    placeholderLastname.querySelector("#placeholder-lastname-value").textContent = student.lastname;
-    placeholderFirstname.querySelector("#placeholder-firstname-value").textContent = student.firstname;
-    placeholderMiddlename.querySelector("#placeholder-middlename-value").textContent = student.middlename;
-    placeholderGender.querySelector("#placeholder-gender-value").textContent = student.gender;
-    placeholderYearLevel.querySelector("#placeholder-year-level-value").textContent = student.year_level;
-    placeholderSection.querySelector("#placeholder-section-value").textContent = student.section;
-    placeholderEmail.querySelector("#placeholder-email-value").textContent = student.email;
+  selectedStudentID = student.id;
+  placeholderFirstName.querySelector(
+    "#placeholder-value-firstName",
+  ).textContent = student.firstname;
+  placeholderMiddleName.querySelector(
+    "#placeholder-value-middleName",
+  ).textContent = student.middlename;
+  placeholderLastName.querySelector("#placeholder-value-lastName").textContent =
+    student.lastname;
+  placeholderGender.querySelector("#placeholder-value-gender").textContent =
+    student.gender;
+  placeholderYearLevel.querySelector(
+    "#placeholder-value-year-level",
+  ).textContent = student.year_level;
+  placeholderSection.querySelector("#placeholder-value-section").textContent =
+    student.section;
+  placeholderEmail.querySelector("#placeholder-value-email").textContent =
+    student.email;
 }
 
 function populateFormFields(student) {
-  txtlastname.value = student.lastname;
-  txtfirstname.value = student.firstname;
-  txtmiddlename.value = student.middlename;
-  txtgender.value = student.gender;
-  txtyearlevel.value =  student.year_level;
-  txtsection.value = student.section;
-  txtemail.value = student.email;
+  txtFirstName.value = student.firstname;
+  txtMiddleName.value = student.middlename;
+  txtLastName.value = student.lastname;
+  txtGender.value = student.gender;
+  txtYearLevel.value = student.year_level;
+  txtSection.value = student.section;
+  txtEmail.value = student.email;
 }
 
-function resetForm() {
-    toggleButtons(false, false);
-    enableFormFields(false);
-    resetPlaceholders();
-    resetInputFields();
+function resetform() {
+  togglebuttons(true, false);
+  enableformfields(false);
+  resetPlaceholder();
+  resetInputFields();
 }
 
-function toggleButtons(ShowSaveCancelBtn = false, ShowAddEditDeleteBtn = false) {
-    saveBtn.classList.toggle("display-none", !ShowSaveCancelBtn);
-    cancelBtn.classList.toggle("display-none", !ShowSaveCancelBtn);
-    editBtn.classList.toggle("display-none", !ShowAddEditDeleteBtn);
-    deleteBtn.classList.toggle("display-none", !ShowAddEditDeleteBtn);
+function togglebuttons(ShowSaveCancelBtns = false, ShowEditDeleteBtns = false) {
+  saveBtn.classList.toggle("display-none", !ShowSaveCancelBtns);
+  cancelBtn.classList.toggle("display-none", !ShowSaveCancelBtns);
+  editBtn.classList.toggle("display-none", !ShowEditDeleteBtns);
+  deleteBtn.classList.toggle("display-none", !ShowEditDeleteBtns);
 }
 
-function enableFormFields(enable = false) {
-    let txtboxes =  document.getElementsByClassName("textbox");
-    Array.from(txtboxes).forEach((txtbox) => {
-        txtbox.classList.toggle("default-text", !enable);
-    });
+function enableformfields(enable = false) {
+  let txtbox = document.getElementsByClassName("textbox");
+  Array.from(txtbox).forEach((txtbox) => {
+    txtbox.classList.toggle("default-text", !enable);
+  });
 
- [txtlastname, txtfirstname, txtmiddlename, txtgender, txtyearlevel, txtsection, txtemail]
- .forEach((input) => {
-        input.disabled = !enable;
-    });
+  [
+    txtFirstName,
+    txtMiddleName,
+    txtLastName,
+    txtGender,
+    txtYearLevel,
+    txtSection,
+    txtEmail,
+  ].forEach((input) => {
+    input.disabled = !enable;
+  });
 }
 
-function resetPlaceholders() {
-    placeholderLastname.innerHTML = `Last Name: <span id="placeholder-lastname-value"></span>`;
-    placeholderFirstname.innerHTML = `First Name: <span id="placeholder-firstname-value"></span>`;
-    placeholderMiddlename.innerHTML = `Middle Name: <span id="placeholder-middlename-value"></span>`;
-    placeholderGender.innerHTML = `Gender: <span id="placeholder-gender-value"></span>`;
-    placeholderYearLevel.innerHTML = `Year Level: <span id="placeholder-year-level-value"></span>`;
-    placeholderSection.innerHTML = `Section: <span id="placeholder-section-value"></span>`;
-    placeholderEmail.innerHTML = `Email: <span id="placeholder-email-value"></span>`;
+function resetPlaceholder() {
+  placeholderFirstName.innerHTML = `First Name: <span id = "placeholder-value-firstName"></span>`;
+  placeholderMiddleName.innerHTML = `Middle Name: <span id = "placeholder-value-middleName"></span>`;
+  placeholderLastName.innerHTML = `Last Name: <span id = "placeholder-value-lastName"></span>`;
+  placeholderGender.innerHTML = `Gender: <span id = "placeholder-value-gender"></span>`;
+  placeholderYearLevel.innerHTML = `Year Level: <span id = "placeholder-value-year-level"></span>`;
+  placeholderSection.innerHTML = `Section: <span id = "placeholder-value-section"></span>`;
+  placeholderEmail.innerHTML = `Email: <span id = "placeholder-value-email"></span>`;
 }
+
 function resetInputFields() {
-    [txtlastname, txtfirstname, txtmiddlename, txtgender, txtyearlevel, txtsection, txtemail]
-    .forEach((input) => {
-        input.value = "";
-    });
+  [
+    txtFirstName,
+    txtMiddleName,
+    txtLastName,
+    txtGender,
+    txtYearLevel,
+    txtSection,
+    txtEmail,
+  ].forEach((input) => {
+    input.value = "";
+  });
 }
 
-function validateForm() {
+function validateInputForm() {
   const errors = [];
-  if (!txtlastname.value) errors.push("Last Name is required.");
-  if (!txtfirstname.value) errors.push("First Name is required.");
-  if (!txtmiddlename.value) errors.push("Middle Name is required.");
-  if (!txtgender.value) errors.push("Gender is required.");
-  if (!txtyearlevel.value) errors.push("Year Level is required.");
-  if (!txtsection.value) errors.push("Section is required.");
-  if (!txtemail.value) errors.push("Email is required.");
+  if (!txtFirstName.value) errors.push("First Name is required.");
+  if (!txtMiddleName.value) errors.push("Middle Name is required.");
+  if (!txtLastName.value) errors.push("Last Name is required.");
+  if (!txtGender.value) errors.push("Gender is required.");
+  if (!txtYearLevel.value) errors.push("Year Level is required.");
+  if (!txtSection.value) errors.push("Section is required.");
+  if (!txtEmail.value) errors.push("Email is required.");
 
-  if(errors.length > 0){
-  alert(errors.join("\n"));
+  if (errors.length > 0) {
+    alert(errors.join("\n"));
   }
-  return errors;  
+
+  return errors;
 }
 
-function getStudentById(studentId){
+function getStudentById(studentId) {
   return students.find((student) => student.id === studentId);
 }
