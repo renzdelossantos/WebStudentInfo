@@ -2,7 +2,7 @@ let students = [];
 let formMode = "Add";
 let selectedStudentID = -1;
 let currentSearchTerm = "";
-const baseURL = "http://192.168.100.54/student-info/tae/assets/php/student.php";
+const baseURL = "https://studentinfoapi-81rs.onrender.com";
 
 const $tbody = $("#student-data");
 const $searchForm = $("#search-form");
