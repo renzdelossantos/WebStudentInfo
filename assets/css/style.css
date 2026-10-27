@@ -8,9 +8,9 @@ body {
     font-family: "Segoe UI", Tahoma, sans-serif;
     font-size: 16px;
     background:
-        radial-gradient(circle at 88% 8%, rgba(240, 172, 76, 0.16), transparent 19rem),
-        #181a22;
-    color: #241a1d;
+        radial-gradient(circle at 88% 8%, rgba(99, 102, 241, 0.14), transparent 19rem),
+        #e9edf5;
+    color: #1e293b;
     font-weight: 400;
 }
 
@@ -24,16 +24,16 @@ body {
 
 .col1 {
     background:
-        linear-gradient(145deg, rgba(255, 235, 203, 0.96), rgba(236, 215, 183, 0.98));
+        linear-gradient(145deg, #f8faff, #eef2f9);
     padding: 0 0.75rem 0.75rem;
 }
 
 .col2 {
     background:
-        linear-gradient(155deg, #173c42 0%, #102e35 58%, #0d252c 100%);
-    color: #fff9ef;
+        linear-gradient(155deg, #26366f 0%, #1b2858 58%, #151f46 100%);
+    color: #f8faff;
     padding: 0 0.75rem 0.75rem;
-    box-shadow: -8px 0 24px rgba(9, 24, 29, 0.22);
+    box-shadow: -8px 0 24px rgba(25, 35, 75, 0.18);
 }
 
 /*------------------------- Column 1 -------------------------*/
@@ -59,13 +59,13 @@ body {
     flex: 1;
     min-width: 0;
     padding: 0.55rem 0.75rem;
-    border: 1px solid #24324a;
+    border: 1px solid #cbd5e1;
     border-radius: 7px;
     font: inherit;
 }
 
 .btn-search {
-    background-color: #1769aa;
+    background-color: #4f46e5;
 }
 
 .table-container {
@@ -77,8 +77,8 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fffaf0;
-    box-shadow: 0 12px 32px rgba(91, 54, 47, 0.16);
+    background-color: #ffffff;
+    box-shadow: 0 12px 32px rgba(43, 58, 106, 0.12);
 }
 
 thead {
@@ -86,8 +86,8 @@ thead {
     top: 0;
     z-index: 1;
     background:
-        linear-gradient(90deg, #b94f52, #c86b58);
-    color: #fffaf0;
+        linear-gradient(90deg, #4f46e5, #7165e8);
+    color: #ffffff;
 }
 
 th {
@@ -97,7 +97,7 @@ th {
     text-transform: uppercase;
     letter-spacing: 0.08rem;
     font-weight: 700;
-    border-right: 1px solid rgba(255, 250, 240, 0.22);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 tbody tr {
@@ -108,16 +108,16 @@ td {
     padding: 0.55rem 0.5rem;
     text-align: center;
     font-size: 14px;
-    border-bottom: 1px solid #dac6b0;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f1dfc7;
+    background-color: #f5f7fc;
 }
 
 tbody tr:hover {
-    background-color: #f4b866;
-    color: #372226;
+    background-color: #e0e7ff;
+    color: #25215b;
 }
 
 /*------------------------- Column 2 -------------------------*/
@@ -131,13 +131,13 @@ tbody tr:hover {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1rem;
-    color: #f6c86d;
+    color: #c4c8ff;
 }
 
 .col2-header p {
     font-size: 11px;
     font-weight: 400;
-    color: #bed7d4;
+    color: #cbd5f7;
 }
 
 .class-action-btn-container {
@@ -157,54 +157,54 @@ tbody tr:hover {
     font-weight: 700;
     letter-spacing: 0.03rem;
     background:
-        linear-gradient(180deg, #315c62, #24464b);
+        linear-gradient(180deg, #5367c5, #3e4fa7);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 7px;
-    color: #fffaf0;
+    color: #ffffff;
     cursor: pointer;
     margin: 0.2rem;
-    box-shadow: 0 3px 8px rgba(6, 20, 23, 0.28);
+    box-shadow: 0 3px 8px rgba(15, 23, 65, 0.22);
 }
 
 .button:hover {
     filter: brightness(1.12);
     transform: translateY(-1px);
-    box-shadow: 0 5px 12px rgba(6, 20, 23, 0.34);
+    box-shadow: 0 5px 12px rgba(15, 23, 65, 0.28);
 }
 
 .button:active {
     transform: translateY(0);
-    box-shadow: 0 1px 3px rgba(6, 20, 23, 0.28);
+    box-shadow: 0 1px 3px rgba(15, 23, 65, 0.22);
 }
 
 .button:focus-visible {
-    outline: 3px solid #f5c76b;
+    outline: 3px solid #a5b4fc;
     outline-offset: 2px;
 }
 
 .btn-add {
-    background: linear-gradient(180deg, #d88a3f, #ba603d);
+    background: linear-gradient(180deg, #8b5cf6, #6d3ed2);
     margin-left: 1rem;
 }
 
 .btn-search {
-    background: linear-gradient(180deg, #d95c56, #b63e47);
+    background: linear-gradient(180deg, #6366f1, #4f46e5);
 }
 
 .btn-edit {
-    background: linear-gradient(180deg, #3c8a85, #27686a);
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
 }
 
 .btn-delete {
-    background: linear-gradient(180deg, #cf5157, #9f303e);
+    background: linear-gradient(180deg, #ef5b70, #d63854);
 }
 
 .btn-save {
-    background: linear-gradient(180deg, #e7a84d, #c57536);
+    background: linear-gradient(180deg, #818cf8, #6366f1);
 }
 
 .btn-cancel {
-    background: linear-gradient(180deg, #5b6f75, #405159);
+    background: linear-gradient(180deg, #64748b, #475569);
 }
 
 /*------------------------- textbox -------------------------*/
@@ -219,7 +219,7 @@ tbody tr:hover {
     width: 100%;
     height: 80%;
     border: none;
-    color: #d5ebeb;
+    color: #e0e7ff;
     padding-top: 20px;
     font-size: 18px;
     outline: none;
@@ -234,7 +234,7 @@ tbody tr:hover {
     width: 100%;
     height: 100%;
     pointer-events: none;
-border-bottom: 1px solid #89b7ad;
+border-bottom: 1px solid #8290c9;
 }
 
 .txtbox-label::after {
@@ -244,7 +244,7 @@ border-bottom: 1px solid #89b7ad;
     height: 100%;
     bottom: -1;
     left: 0;
-    border-bottom: 2px solid #f2ba5a;
+    border-bottom: 2px solid #a5b4fc;
     transform: translateX(-100%);
     transition: all 0.3s ease;
 }
@@ -264,7 +264,7 @@ border-bottom: 1px solid #89b7ad;
 {
     transform: translateY(-150%);
     font-size: 12px;
-    color: #f2ba5a;
+    color: #c4c8ff;
 }
 
 .textbox input:focus+.txtbox-label::after,
@@ -285,7 +285,7 @@ border-bottom: 1px solid #89b7ad;
 }
 
 .placeholder span {
-    color: #f4fbff;
+    color: #f8faff;
 }
 
 /* -------------------- Option Box -------------------- */
@@ -315,5 +315,5 @@ border-bottom: 1px solid #89b7ad;
 
 .option-box select option {
     color: #fff9ef;
-    background-color: #173c42;
+    background-color: #1b2858;
 }
