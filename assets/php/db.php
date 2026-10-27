@@ -1,6 +1,6 @@
 <?php   
 $host = "localhost";
-$db = "c2_cristy";
+$db = "c2_renz";
 $user = "root";
 $pass = "";
 
